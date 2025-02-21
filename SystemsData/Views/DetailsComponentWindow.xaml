@@ -1,0 +1,55 @@
+﻿<Window x:Class="SystemsData.Views.DetailsComponentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Title="Детали компонента" Height="500" Width="600">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Тип:" FontWeight="Bold" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Type}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Статус:" FontWeight="Bold" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Status}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Создан:" FontWeight="Bold" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding CreatedAt, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}"/>
+                <TextBlock Text=" (Сотрудник: " FontWeight="Bold" Margin="5,0,0,0"/>
+                <TextBlock Text="{Binding CreatedByName}"/>
+                <TextBlock Text=")"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Замена/ремонт:" FontWeight="Bold" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding ReplacementInfo}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Файл:" FontWeight="Bold" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding FileAttachmentLength}"/>
+            </StackPanel>
+            <TextBlock Text="Дополнительная информация:" FontWeight="Bold" Margin="0,5,0,0"/>
+            <TextBlock Text="{Binding Details}" TextWrapping="Wrap"/>
+        </StackPanel>
+        <GroupBox Header="Дополнительные комплектующие" Grid.Row="1" Margin="0,0,0,10">
+            <DataGrid x:Name="dgAdditionalParts" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Тип" Binding="{Binding PartType}" Width="*"/>
+                    <DataGridTextColumn Header="Номер" Binding="{Binding PartNumber}" Width="*"/>
+                    <DataGridTextColumn Header="Наименование" Binding="{Binding PartName}" Width="*"/>
+                    <DataGridTextColumn Header="Доп. сведения" Binding="{Binding AdditionalDetails}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+            <Button Content="Просмотр файла" Click="btnViewFile_Click" Margin="0,0,5,0"/>
+            <Button Content="Закрыть" Click="btnClose_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

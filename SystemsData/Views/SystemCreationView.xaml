@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="SystemsData.Views.SystemCreationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SystemsData.Views"
+             x:Name="SystemCreationControl">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Заголовок и данные системы -->
+            <RowDefinition Height="*"/>
+            <!-- Список выбранных компонентов -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопки управления -->
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок и данные системы -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Создание системы" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Text="Название системы:" Width="140" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtSystemName" Width="300"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Text="Описание:" Width="140" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtSystemDescription" Width="300"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Список выбранных компонентов -->
+        <GroupBox Header="Компоненты системы" Grid.Row="1" Margin="0,0,0,10">
+            <DataGrid x:Name="dgSelectedComponents" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ComponentId}" Width="50"/>
+                    <DataGridTextColumn Header="Тип" Binding="{Binding Type}" Width="100"/>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="150"/>
+                    <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="100"/>
+                </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Доп. информация" Click="MenuItem_Details_Click"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+            </DataGrid>
+        </GroupBox>
+
+        <!-- Кнопки для добавления компонентов и сохранения системы -->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+            <Button Content="Добавить существующий" Margin="5" Click="btnAddExisting_Click"/>
+            <Button Content="Добавить новый" Margin="5" Click="btnAddNew_Click"/>
+            <Button Content="Сохранить систему" Margin="5" Click="btnSaveSystem_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,37 @@
+﻿<Window x:Class="SystemsData.Views.AddPartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Title="Добавить комплектующую" Height="300" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Тип:" Grid.Row="0" Grid.Column="0" Margin="0,0,10,5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtPartType" Grid.Row="0" Grid.Column="1" Margin="0,0,0,5"/>
+
+        <TextBlock Text="Номер:" Grid.Row="1" Grid.Column="0" Margin="0,0,10,5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtPartNumber" Grid.Row="1" Grid.Column="1" Margin="0,0,0,5"/>
+
+        <TextBlock Text="Наименование:" Grid.Row="2" Grid.Column="0" Margin="0,0,10,5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtPartName" Grid.Row="2" Grid.Column="1" Margin="0,0,0,5"/>
+
+        <TextBlock Text="Доп. сведения:" Grid.Row="3" Grid.Column="0" Margin="0,0,10,5" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtAdditionalDetails" Grid.Row="3" Grid.Column="1" Margin="0,0,0,5" AcceptsReturn="True" TextWrapping="Wrap" Height="60"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Right">
+            <Button x:Name="btnSavePart" Content="Сохранить" Width="80" Margin="0,10,10,0" Click="btnSavePart_Click"/>
+            <Button x:Name="btnCancelPart" Content="Отмена" Width="80" Margin="0,10,0,0" Click="btnCancelPart_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="SystemsData.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SystemsData.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStartupLocation="CenterScreen"
+        Title="Главное окно" Height="600" Width="1000"
+        materialDesign:ColorZoneAssist.Mode="PrimaryDark">
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Заголовок/меню -->
+            <RowDefinition Height="Auto"/>
+            <!-- Основная область с вкладками -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+       
+
+        <!-- Основная область с вкладками -->
+        <TabControl Grid.Row="1" Margin="10">
+            <TabItem Header="Сбор систем">
+                <Grid Margin="10">
+                    <local:SystemCreationView />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Прием комплектующих">
+                <Grid Margin="10">
+                    <local:AcceptanceView />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Список комплектующих">
+                <Grid Margin="10">
+                    <local:FaultyComponentsView />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Список систем">
+                <Grid Margin="10">
+                    <local:SystemsListGridView/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

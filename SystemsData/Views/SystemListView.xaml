@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="SystemsData.Views.SystemsListGridView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:SystemsData.ViewModels"
+             x:Name="SystemsListControl">
+    <Grid Margin="10">
+        <DataGrid x:Name="dgSystems" AutoGenerateColumns="False" IsReadOnly="True" 
+                  HorizontalAlignment="Stretch" ItemsSource="{Binding Systems}"
+                  ContextMenuOpening="dgSystems_ContextMenuOpening">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding SystemId}" Width="50"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="200"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="300"/>
+                <DataGridTextColumn Header="Создан" Binding="{Binding CreatedAt, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}" Width="150"/>
+                <DataGridTextColumn Header="Сотрудник" Binding="{Binding CreatedByName}" Width="150"/>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Подробнее" Click="MenuItem_Details_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+</UserControl>
